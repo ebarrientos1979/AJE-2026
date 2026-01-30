@@ -44,20 +44,3 @@ resource "aws_s3_bucket_website_configuration" "website" {
     key = "index.html"
   }
 }
-
-# S3 Bucket ACL (public-read)
-resource "aws_s3_bucket_acl" "website" {
-  bucket = aws_s3_bucket.website.id
-  acl    = "public-read"
-  
-  depends_on = [aws_s3_bucket_ownership_controls.website]
-}
-
-# S3 Bucket ownership controls
-resource "aws_s3_bucket_ownership_controls" "website" {
-  bucket = aws_s3_bucket.website.id
-
-  rule {
-    object_ownership = "BucketOwnerPreferred"
-  }
-}
