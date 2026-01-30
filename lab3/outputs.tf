@@ -1,6 +1,6 @@
 output "website_url" {
-  description = "Website URL"
-  value       = "http://${aws_s3_bucket.website.bucket}.s3-website-${aws_s3_bucket.website.region}.amazonaws.com"
+  description = "CloudFront Distribution URL"
+  value       = "https://${aws_cloudfront_distribution.website.domain_name}"
 }
 
 output "bucket_name" {
